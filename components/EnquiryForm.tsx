@@ -4,12 +4,14 @@ import { useState } from "react";
 
 type Errors = Partial<Record<"name" | "company" | "email" | "message", string>>;
 
-/** UI-only enquiry form (no backend yet): validates and shows a success state. */
+/** Enquiry form: validates, then posts to /api/enquiry which emails the team. */
 export default function EnquiryForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const d = new FormData(e.currentTarget);
     const v = (k: string) => String(d.get(k) ?? "").trim();
@@ -19,7 +21,22 @@ export default function EnquiryForm() {
     if (!/^\S+@\S+\.\S+$/.test(v("email"))) next.email = "Please enter a valid email address.";
     if (!v("message")) next.message = "Please describe your requirement.";
     setErrors(next);
-    if (Object.keys(next).length === 0) setSent(true); // TODO: wire to backend (e.g. SES / API route)
+    if (Object.keys(next).length > 0) return;
+    setSending(true);
+    setFailed(false);
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(d.entries())),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      setFailed(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   if (sent)
@@ -58,7 +75,8 @@ export default function EnquiryForm() {
         {errors.message && <span className="err">{errors.message}</span>}
       </div>
       <div className="field full">
-        <button type="submit" className="btn btn-accent" style={{ justifySelf: "start", cursor: "pointer" }}>Send Enquiry</button>
+        <button type="submit" disabled={sending} className="btn btn-accent" style={{ justifySelf: "start", cursor: "pointer" }}>{sending ? "Sending…" : "Send Enquiry"}</button>
+        {failed && <span className="err" role="alert">Sorry, we couldn’t send your enquiry. Please try again or email contact@crediblebiopharma.com.</span>}
       </div>
     </form>
   );

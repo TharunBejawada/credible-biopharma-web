@@ -353,9 +353,9 @@ export default function Home() {
           <div className="col" style={{ flex: "1.2 1 300px", minWidth: 0, gap: 14 }}>
             <h3 style={{ fontFamily: "var(--head)", fontSize: 16, fontWeight: 600, color: "#fff" }}>Business Enquiries</h3>
             <p style={{ fontSize: 15, lineHeight: 1.7 }}>For distribution, institutional procurement, bulk supply, export enquiries and product requirements, contact our business development team.</p>
-            <a href="#contact" className="btn btn-sm btn-accent" style={{ alignSelf: "flex-start", color: "#fff", padding: "0 20px" }}>Contact Business Development</a>
+            <a href="mailto:contact@crediblebiopharma.com" className="btn btn-sm btn-accent" style={{ alignSelf: "flex-start", color: "#fff", padding: "0 20px", justifyContent: "center", textAlign: "center" }}>Contact Business Development</a>
             <div className="col" style={{ gap: 8, fontSize: 15, color: "#fff" }}>
-              <span>[EMAIL ADDRESS]</span><span>[PHONE / WHATSAPP]</span><span>[OFFICE ADDRESS]</span>
+              <a href="mailto:contact@crediblebiopharma.com" style={{ color: "#fff" }}>contact@crediblebiopharma.com</a><a href="tel:+919849168686" style={{ color: "#fff" }}>+91 98491 68686</a>
             </div>
           </div>
         </div>

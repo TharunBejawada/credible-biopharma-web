@@ -13,5 +13,9 @@ npm run build
 2. Amplify detects Next.js; `amplify.yml` is included. Use Node 20+.
 3. Save and deploy; every push to `main` redeploys.
 
-The enquiry form is UI-only (validation + success state); wire `components/EnquiryForm.tsx` to a backend later.
-Footer contact details are placeholders (`[EMAIL ADDRESS]`, etc.) as in the design.
+## Enquiry form email
+`POST /api/enquiry` sends enquiries via Gmail (nodemailer) to contact@ and mangareddy@crediblebiopharma.com.
+Set these environment variables (Amplify Console → Hosting → Environment variables; `.env.local` for local dev). Never commit them:
+
+- `EMAIL_USER` – Gmail sender address
+- `EMAIL_PASS` – Gmail App Password
