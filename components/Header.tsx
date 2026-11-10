@@ -10,6 +10,7 @@ const links = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("top");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -35,8 +36,17 @@ export default function Header() {
             <a key={id} href={`#${id}`} className={active === id ? "active" : undefined}>{label}</a>
           ))}
         </nav>
-        <a href="#contact" className="btn btn-sm btn-accent">Request a Quote</a>
+        <a href="#contact" className="btn btn-sm btn-accent header-cta">Request a Quote</a>
+        <button type="button" className="burger" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen((o) => !o)}>
+          <span />
+        </button>
       </div>
+      <nav id="mobile-menu" aria-label="Mobile" className={`mobile-menu${open ? " open" : ""}`} onClick={(e) => (e.target as HTMLElement).closest("a") && setOpen(false)} {...(!open && { inert: true })}>
+        {links.map(([id, label]) => (
+          <a key={id} href={`#${id}`} className={active === id ? "active" : undefined}>{label}</a>
+        ))}
+        <a href="#contact" className="btn btn-sm btn-accent">Request a Quote</a>
+      </nav>
     </header>
   );
 }

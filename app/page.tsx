@@ -96,7 +96,7 @@ export default function Home() {
           </Stagger>
           <Reveal delay={0.2} style={{ flex: "1 1 380px", minWidth: 0, display: "flex", justifyContent: "center" }}>
             <div className="hero-img">
-              <img src="/logo.jpg" alt="Credible Biopharma – Trusted Science, Better Health, Brighter Tomorrow" />
+              <img src="/hero.png" alt="Automated pharmaceutical filling line handling injection pens" />
             </div>
           </Reveal>
         </div>
