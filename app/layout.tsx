@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const sora = Sora({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-sora", display: "swap" });
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-inter", display: "swap" });
+// Self-hosted variable fonts (no build-time Google Fonts fetch, so Amplify builds are reliable).
+const sora = localFont({ src: "./fonts/Sora.woff2", weight: "100 800", variable: "--font-sora", display: "swap" });
+const inter = localFont({ src: "./fonts/Inter.woff2", weight: "100 900", variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Credible Biopharma – Reliable Healthcare Solutions",
