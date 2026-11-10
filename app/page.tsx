@@ -9,7 +9,7 @@ const chipList = (items: string[], cls = "") => items.map((c) => <span key={c} c
 
 const portfolioBig = [
   {
-    title: "Injectables", cta: "View Injectable Range →", label: "Product categories may include",
+    title: "Injections", cta: "View Injection Range →", label: "Product categories may include",
     text: "A comprehensive range of injectable pharmaceutical products for institutional and hospital requirements. Our injectable portfolio may include products across multiple therapeutic segments and dosage formats, supporting the needs of hospitals, clinics, distributors and healthcare procurement teams.",
     chips: ["General injectables", "Antibiotic injectables", "Critical care injectables", "Anaesthesia products", "Pain management injectables", "Gastrointestinal injectables", "Anti-infective products", "Nutritional injectables", "Emergency care products", "Specialty injectables"],
     icon: <path d="m18 2 4 4M17 7l3-3M19 9 8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5M9 11l4 4M5 19l-3 3M14 4l6 6" />,
@@ -17,7 +17,7 @@ const portfolioBig = [
   {
     title: "Pharmaceutical Drugs", cta: "Explore Pharmaceutical Products →", label: "Therapeutic segments may include",
     text: "We offer a broad range of pharmaceutical formulations for different therapeutic areas and healthcare requirements, developed to support institutional procurement, distribution networks and healthcare businesses looking for dependable pharmaceutical supply.",
-    chips: ["Antibiotics", "Analgesics", "Anti-inflammatory medicines", "Gastroenterology", "Cardiology", "Neurology", "Diabetology", "Respiratory care", "General medicine", "Critical care", "Nutritional supplements", "Specialty medicines"],
+    chips: ["Antibiotics", "Analgesics", "Anti-inflammatory medicines", "Gastroenterology", "Cardiology", "Neurology", "Diabetology", "Respiratory care", "General medicine", "Nutritional supplements", "Specialty medicines"],
     note: "Available forms may include tablets, capsules, syrups, suspensions, injectables and other formulations depending on market requirements.",
     icon: <><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /><path d="m8.5 8.5 7 7" /></>,
   },
@@ -83,7 +83,6 @@ export default function Home() {
       <section id="top" className="hero">
         <div className="hero-in">
           <Stagger gap={0.12} className="col" style={{ flex: "1 1 520px", minWidth: 0, gap: 24 }}>
-            <StaggerItem as="span" className="eyebrow">B2B Healthcare Solutions</StaggerItem>
             <StaggerItem><h1>Reliable Healthcare Solutions. <em>Stronger Business Partnerships.</em></h1></StaggerItem>
             <StaggerItem>
               <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--text)", maxWidth: 600 }}>
@@ -106,7 +105,7 @@ export default function Home() {
       {/* CATEGORY STRIP */}
       <div className="strip">
         <div className="strip-in">
-          {["Pharmaceuticals", "Injectables", "Surgicals", "Medical Consumables", "Implants"].map((c, i) => (
+          {["Pharmaceutical Drugs", "Injectables", "Surgicals", "Medical Consumables", "Implants"].map((c, i) => (
             <span key={c} style={{ display: "contents" }}>{i > 0 && <span className="sdot" />}<span>{c}</span></span>
           ))}
         </div>
